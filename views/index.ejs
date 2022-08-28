@@ -5,16 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>Todo APP</title>
 </head>
 <body>
-    <center>
-        <h2>Tim Todo List</h2>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <!-- <div class="form-signin w-100 m-auto"> -->
+        <h1>Tim Todo List</h1>
 
         <form action="/" method="POST">
-            <input type="text" name="input" id="">
-            <button type="submit">Add Job</button>
+            <img class="mb-4" src="/img/Me.png" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please Enter a new Event</h1>
+        
+            <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" name="input" placeholder="What will you like to do ?">
+            <label for="floatingInput">Enter Event</label>
+            </div>
+
+            <div class="checkbox mb-3"></div>
+        
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Add Job</button>
+            
         </form>
+
+        <!-- </div> -->
+    </div>
+
+    <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <% todos.forEach((todo) => { %>
+                <form action="/delete" method="POST">
+                    <input class="checkbox mb-3" type="checkbox" name="checkbox" id="" value="<%=todo._id %>" onchange="this.form.submit()">
+                    <span><p><%= todo.item %></p></span>
+                </form>
+            <% }) %>
+        </div>
+    </main>
+    <center>
+        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
     </center>
+
 </body>
 </html>

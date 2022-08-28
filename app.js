@@ -47,6 +47,19 @@ app.post('/', (req, res) => {
     })
 })
 
+app.post('/delete', (req, res) => {
+    const todo = req.body.checkbox
+
+    Todo.findByIdAndDelete(todo, (err) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.redirect('/')
+        }
+    })
+})
+
 app.listen(PORT, () => {
     console.log('listening to the server on http://localhost:3000')
 })
