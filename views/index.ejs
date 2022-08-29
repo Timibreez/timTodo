@@ -32,13 +32,32 @@
     </div>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <% todos.forEach((todo) => { %>
-                <form action="/delete" method="POST">
-                    <input class="checkbox mb-3" type="checkbox" name="checkbox" id="" value="<%=todo._id %>" onchange="this.form.submit()">
-                    <span><p><%= todo.item %></p></span>
-                </form>
-            <% }) %>
+        <div style="max-width: 50%; margin: auto;">
+            <table class="table table-success table-striped text-center">
+                <thead>
+                <tr>
+                    <th scope="col">sn</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Activity</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% let s = 0 %>
+                    <% todos.forEach((todo) => { %>
+                        <tr>
+                            <th scope="row"><%= s = s+1 %></th>
+                            <td>
+                                <form action="/delete" method="POST">
+                                    <input class="checkbox mb-3" type="checkbox" name="checkbox" id="" value="<%=todo._id %>" onchange="this.form.submit()">
+                                </form>
+                            </td>
+
+                            <td><%= todo.item %></td>
+                        </tr>
+                    <% }) %>
+            
+                </tbody>
+            </table>
         </div>
     </main>
     <center>
